@@ -1,3 +1,7 @@
+package marmalade
+
+import org.apache.commons.math3.complex.Complex
+
 /**
    Copyright 2015 Mahesh Khanwalkar
 
@@ -14,11 +18,18 @@
    limitations under the License.
 */
 
-/* All contributors should make sure they can
-   compile & run this Scala code */
+object FFTUtils {
+   def toComplex(real: Array[Double], complex: Array[Double]):Array[Complex] = {
+      if (real.length != complex.length)
+         return null
 
-object ScalaTest {
-    def main (args: Array[String]) {
-        println("Success! You're good to go. ")
-    }
+      val combined: Array[Complex] = new Array[Complex](real.length)
+
+      for(i <- combined.indices)
+      {
+         combined(i) = new Complex(real(i), complex(i))
+      }
+
+      combined
+   }
 }
