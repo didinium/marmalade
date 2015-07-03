@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-/* All contributors should test whether they can
+/* All contributors should make sure they can
    compile & run this Scala code */
 
 object ScalaTest {
