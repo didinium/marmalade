@@ -1,7 +1,3 @@
-package marmalade.audio
-
-import javax.sound.sampled.DataLine.Info
-import javax.sound.sampled.{AudioSystem, SourceDataLine, DataLine, AudioFormat}
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -19,12 +15,8 @@ import javax.sound.sampled.{AudioSystem, SourceDataLine, DataLine, AudioFormat}
    limitations under the License.
 */
 
-class AudioUtil {
-    private val format = new AudioFormat(131072, 8, 1, true, false)
-    private val mic = AudioSystem.getTargetDataLine(format)
-
-    def startMic() = {
-        mic.open()
-        mic.start()
+object AudioTest {
+    def main(args: Array[String]) {
+        //TODO - make sure data can be received by mic
     }
 }
