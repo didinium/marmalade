@@ -25,7 +25,6 @@ class Note {
     def setType(note : NoteType) : Unit = nType = note
     def setFrequency(freq : Double) : Unit = this.freq = freq
 
-
     def getType = nType
     def getFrequency = freq
 }
