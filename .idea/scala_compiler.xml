@@ -4,7 +4,7 @@
     <profile name="Maven 1" modules="Marmalade">
       <parameters>
         <parameter value="-dependencyfile" />
-        <parameter value="C:\Users\Mahesh\IdeaProjects\marmalade\target/.scala_dependencies" />
+        <parameter value="${project.build.directory}/.scala_dependencies" />
       </parameters>
     </profile>
   </component>
