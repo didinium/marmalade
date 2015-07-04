@@ -1,4 +1,4 @@
-import marmalade.misc.ConversionUtils
+import marmalade.audio.AudioUtil
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -16,19 +16,14 @@ import marmalade.misc.ConversionUtils
    limitations under the License.
 */
 
-object UtilTest {
+object AudioTest {
     def main(args: Array[String]) {
-        val dArr = new Array[Double](10)
-        for(i <- dArr.indices){
-            dArr(i) = i
-        }
+        val util = new AudioUtil
+        util.startMic()
 
-        println("[" + dArr.mkString(", ") + "]")
-        val complex = ConversionUtils.toComplex(dArr)
+        val buf = new Array[Byte](131072)
 
-        println("[" + complex.mkString(", ") + "]")
-        val data = ConversionUtils.toDouble(complex)
-
-        println("[" + data.mkString(", ") + "]")
+        util.readMic(buf)
+        util.closeMic()
     }
 }

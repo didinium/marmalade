@@ -1,4 +1,6 @@
-import marmalade.misc.ConversionUtils
+package marmalade.audio
+
+import javax.sound.sampled.{AudioFormat, AudioSystem}
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -16,19 +18,20 @@ import marmalade.misc.ConversionUtils
    limitations under the License.
 */
 
-object UtilTest {
-    def main(args: Array[String]) {
-        val dArr = new Array[Double](10)
-        for(i <- dArr.indices){
-            dArr(i) = i
-        }
+class AudioUtil {
+    private val format = new AudioFormat(131072, 8, 1, true, false)
+    private val mic = AudioSystem.getTargetDataLine(format)
 
-        println("[" + dArr.mkString(", ") + "]")
-        val complex = ConversionUtils.toComplex(dArr)
+    def startMic(): Unit = {
+        mic.open()
+        mic.start()
+    }
 
-        println("[" + complex.mkString(", ") + "]")
-        val data = ConversionUtils.toDouble(complex)
+    def readMic(buf: Array[Byte]): Unit = {
+        mic.read(buf, 0, buf.length)
+    }
 
-        println("[" + data.mkString(", ") + "]")
+    def closeMic(): Unit = {
+        mic.close()
     }
 }
