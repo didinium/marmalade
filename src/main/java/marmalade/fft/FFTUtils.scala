@@ -1,4 +1,8 @@
+package marmalade.fft
+
 import marmalade.misc.ConversionUtils
+import org.apache.commons.math3.complex.Complex
+import org.jtransforms.fft.DoubleFFT_1D
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -16,19 +20,20 @@ import marmalade.misc.ConversionUtils
    limitations under the License.
 */
 
-object UtilTest {
-    def main(args: Array[String]) {
-        val dArr = new Array[Double](10)
-        for(i <- dArr.indices){
-            dArr(i) = i
-        }
+object FFTUtils {
+    def doFFT(data: Array[Complex]): Array[Complex] = {
+        val fft = new DoubleFFT_1D(data.length)
+        val equiv = ConversionUtils.toDouble(data)
 
-        println("[" + dArr.mkString(", ") + "]")
-        val complex = ConversionUtils.toComplex(dArr)
+        fft.complexForward(equiv)
+        ConversionUtils.toComplex(equiv)
+    }
 
-        println("[" + complex.mkString(", ") + "]")
-        val data = ConversionUtils.toDouble(complex)
+    def doiFFT(data: Array[Complex]): Array[Complex] = {
+        val fft = new DoubleFFT_1D(data.length)
+        val equiv = ConversionUtils.toDouble(data)
 
-        println("[" + data.mkString(", ") + "]")
+        fft.complexForward(equiv)
+        ConversionUtils.toComplex(equiv)
     }
 }
