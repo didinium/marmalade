@@ -20,12 +20,21 @@ import marmalade.note.NoteType.NoteType
 
 class Note {
     private var nType: NoteType = _
+    private var freq: Double = _
 
     def setType(note: NoteType): Unit = {
         nType = note
     }
 
+    def setFrequency(freq: Double): Unit = {
+        this.freq = freq
+    }
+
     def getType : NoteType = {
         nType
+    }
+
+    def getFrequency : Double = {
+        freq
     }
 }

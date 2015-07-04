@@ -22,8 +22,8 @@ object NoteTest {
         note.setType(NoteType.Half)
 
         println(note.getType)
-        note.setType(NoteType.Sixteenth)
+        note.setFrequency(440.0)
 
-        println(note.getType)
+        println(note.getFrequency)
     }
 }
