@@ -1,7 +1,6 @@
 package marmalade.audio
 
-import javax.sound.sampled.DataLine.Info
-import javax.sound.sampled.{AudioSystem, SourceDataLine, DataLine, AudioFormat}
+import javax.sound.sampled.{AudioFormat, AudioSystem}
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -23,8 +22,16 @@ class AudioUtil {
     private val format = new AudioFormat(131072, 8, 1, true, false)
     private val mic = AudioSystem.getTargetDataLine(format)
 
-    def startMic() = {
+    def startMic(): Unit = {
         mic.open()
         mic.start()
+    }
+
+    def readMic(buf: Array[Byte]): Unit = {
+        mic.read(buf, 0, buf.length)
+    }
+
+    def closeMic(): Unit = {
+        mic.close()
     }
 }

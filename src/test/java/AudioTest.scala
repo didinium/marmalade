@@ -1,3 +1,4 @@
+import marmalade.audio.AudioUtil
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -17,6 +18,12 @@
 
 object AudioTest {
     def main(args: Array[String]) {
-        //TODO - make sure data can be received by mic
+        val util = new AudioUtil
+        util.startMic()
+
+        val buf = new Array[Byte](131072)
+
+        util.readMic(buf)
+        util.closeMic()
     }
 }
