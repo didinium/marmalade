@@ -1,3 +1,5 @@
+import marmalade.FFTUtils
+
 /**
    Copyright 2015 Mahesh Khanwalkar
 
@@ -14,11 +16,19 @@
    limitations under the License.
 */
 
-/* All contributors should make sure they can
-   compile & run this Scala code */
+object UtilTest {
+    def main(args: Array[String]) {
+        val dArr = new Array[Double](10)
+        for(i <- dArr.indices){
+            dArr(i) = i
+        }
 
-object ScalaTest {
-    def main (args: Array[String]) {
-        println("Success! You're good to go. ")
+        println("[" + dArr.mkString(", ") + "]")
+        val complex = FFTUtils.toComplex(dArr)
+
+        println("[" + complex.mkString(", ") + "]")
+        val data = FFTUtils.toDouble(complex)
+
+        println("[" + data.mkString(", ") + "]")
     }
 }
