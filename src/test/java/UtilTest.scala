@@ -1,4 +1,4 @@
-import marmalade.FFTUtils
+import marmalade.ConversionUtils
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -24,10 +24,10 @@ object UtilTest {
         }
 
         println("[" + dArr.mkString(", ") + "]")
-        val complex = FFTUtils.toComplex(dArr)
+        val complex = ConversionUtils.toComplex(dArr)
 
         println("[" + complex.mkString(", ") + "]")
-        val data = FFTUtils.toDouble(complex)
+        val data = ConversionUtils.toDouble(complex)
 
         println("[" + data.mkString(", ") + "]")
     }

@@ -18,7 +18,7 @@ import org.apache.commons.math3.complex.Complex
    limitations under the License.
 */
 
-object FFTUtils {
+object ConversionUtils {
 
     def toComplex(data: Array[Double]): Array[Complex] = {
 
