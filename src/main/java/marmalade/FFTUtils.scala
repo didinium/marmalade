@@ -19,17 +19,42 @@ import org.apache.commons.math3.complex.Complex
 */
 
 object FFTUtils {
-   def toComplex(real: Array[Double], complex: Array[Double]):Array[Complex] = {
-      if (real.length != complex.length)
-         return null
 
-      val combined: Array[Complex] = new Array[Complex](real.length)
+    def toComplex(data: Array[Double]): Array[Complex] = {
 
-      for(i <- combined.indices)
-      {
-         combined(i) = new Complex(real(i), complex(i))
-      }
+        /* data is an Array that contains 'a' and 'b' (a + bi)
+           so, the length MUST be even */
 
-      combined
-   }
+        if (data.length % 2 != 0)
+            return null
+
+        val complex: Array[Complex] = new Array[Complex](data.length / 2)
+
+        var j = 0
+        for (i <- data.indices if i % 2 == 0) {
+            val real = data(i)
+            val comp = data(i + 1)
+
+            complex(j) = new Complex(real, comp)
+            j += 1
+        }
+
+        complex
+    }
+
+    def toDouble(complex : Array[Complex]): Array[Double] = {
+        val dArr = new Array[Double](complex.length * 2)
+
+        var j = 0
+        for(i <- dArr.indices if i % 2 == 0) {
+            val comp = complex(j)
+
+            dArr(i) = comp.getReal
+            dArr(i + 1) = comp.getImaginary
+
+            j += 1
+        }
+
+        dArr
+    }
 }
