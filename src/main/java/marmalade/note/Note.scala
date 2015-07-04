@@ -1,4 +1,6 @@
-package marmalade.audio
+package marmalade.note
+
+import marmalade.note.NoteType.NoteType
 
 /**
    Copyright 2015 Mahesh Khanwalkar
@@ -17,5 +19,13 @@ package marmalade.audio
 */
 
 class Note {
+    private var nType: NoteType = _
 
+    def setType(note: NoteType): Unit = {
+        nType = note
+    }
+
+    def getType : NoteType = {
+        nType
+    }
 }
